@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Степан Горев](https://up.htmlacademy.ru/javascript/22/user/1544765).
-* Наставник: `Неизвестно`.
+* Наставник: [Дмитрий (sench) Железцов](https://htmlacademy.ru/profile/sench).
 
 ---
 
