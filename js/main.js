@@ -13,3 +13,6 @@ const getRandomFloat = (min,max,decimalDigits=0) => {
   }
   return 'Invalid data';
 }
+
+getRandomInteger(3, 6);
+getRandomFloat(4.1, 7.7, 2);
