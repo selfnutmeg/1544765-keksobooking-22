@@ -7,8 +7,7 @@ const TITLES = [
   'Достопримечательность Геленджика',
 ];
 const APARTMENTS_TYPE = ['palace', 'flat', 'house', 'bungalow'];
-const CHECKIN = ['12:00', '13:00', '14:00'];
-const CHECKOUT = ['12:00', '13:00', '14:00'];
+const TIMELINES = ['12:00', '13:00', '14:00'];
 const DESCRIPTIONS = [
   'Удачное сочетание цены и качества',
   'Комната грязи отсутствует',
@@ -59,10 +58,15 @@ const getRandomArray = (array) => {
   return arrayList;
 }
 
+const LOCATION_X_LOWER = 35.65;
+const LOCATION_X_UPPER = 35.7;
+const LOCATION_Y_LOWER = 139.7;
+const LOCATION_Y_UPPER = 139.8;
+
 const getAddress = () => {
   return {
-    x: getRandomFloat(35.65, 35.7, 5),
-    y: getRandomFloat(139.7, 139.8, 5),
+    x: getRandomFloat(LOCATION_X_LOWER, LOCATION_X_UPPER, 5),
+    y: getRandomFloat(LOCATION_Y_LOWER, LOCATION_Y_UPPER, 5),
   }
 }
 
@@ -80,8 +84,8 @@ const getOffer = () => {
       type: getRandomArrayElement(APARTMENTS_TYPE),
       rooms: getRandomInteger(1, 10),
       guests: getRandomInteger(1, 10),
-      checkin: getRandomArrayElement(CHECKIN),
-      checkout: getRandomArrayElement(CHECKOUT),
+      checkin: getRandomArrayElement(TIMELINES),
+      checkout: getRandomArrayElement(TIMELINES),
       features: getRandomArray(FEATURES),
       description: getRandomArrayElement(DESCRIPTIONS),
       photo: getRandomArray(PHOTOS),
