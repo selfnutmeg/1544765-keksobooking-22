@@ -1,7 +1,3 @@
-import {getOffer} from './data.js';
+import {fillMap} from './popup.js';
 
-const OFFER_COUNT = 10;
-
-const OFFERS = new Array(OFFER_COUNT).fill(null).map(() => getOffer());
-
-OFFERS;
+fillMap();
