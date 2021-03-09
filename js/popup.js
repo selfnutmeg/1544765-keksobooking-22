@@ -1,7 +1,4 @@
-import {getOffers} from './data.js';
-
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
-const map = document.querySelector('.map__canvas');
 
 const translateType = (type) => {
   switch (type) {
@@ -63,8 +60,4 @@ const createSingleCard = ({author, offer, location}) => {
   return card;
 };
 
-const fillMap = () => {
-  map.appendChild(createSingleCard(getOffers()[0]));
-}
-
-export {fillMap};
+export {createSingleCard};
