@@ -1,9 +1,5 @@
 /* global L:readonly */
-import {disablePage} from './form.js';
-import {createSingleCard} from './popup.js';
-import {getOffers} from './data.js';
-
-const offersList = getOffers();
+import {createSingleCard} from './baloon.js';
 
 const StartAddress = {
   X: 35.685210,
@@ -33,10 +29,6 @@ const map = L.map('map-canvas');
 const inputAddress = document.querySelector('#address');
 inputAddress.value = `${StartAddress.X}, ${StartAddress.Y}`;
 
-map.on('load', () => {
-  disablePage(false);
-});
-
 map.setView({
   lat: StartAddress.X,
   lng: StartAddress.Y,
@@ -53,7 +45,7 @@ const mainPinIcon = L.icon({
   iconUrl: MainPin.URL,
   iconSize: MainPin.SIZE,
   iconAnchor: MainPin.ANCHOR,
-})
+});
 
 const marker = L.marker(
   {
@@ -64,17 +56,17 @@ const marker = L.marker(
     draggable: true,
     icon: mainPinIcon,
   },
-)
+);
 
 marker.on('moveend', (evt) => {
   inputAddress.value = `${evt.target.getLatLng().lat.toFixed(6)}, ${evt.target.getLatLng().lng.toFixed(6)}`
-})
+});
 
 marker.addTo(map);
 
-const displayMarkers = (arr) => {
+const displayMarkers = (points) => {
 
-  arr.forEach((point) => {
+  points.forEach((point) => {
     const icon = L.icon({
       iconUrl: RegularPin.URL,
       iconSize: RegularPin.SIZE,
@@ -83,8 +75,8 @@ const displayMarkers = (arr) => {
 
     const marker = L.marker(
       {
-        lat: point.location.x,
-        lng: point.location.y,
+        lat: point.location.lat,
+        lng: point.location.lng,
       },
       {
         icon,
@@ -99,6 +91,19 @@ const displayMarkers = (arr) => {
         },
       )
   });
-}
+};
 
-displayMarkers(offersList);
+const resetMarker = () => {
+  marker.setLatLng(
+    {
+      lat: StartAddress.X,
+      lng: StartAddress.Y,
+    },
+  );
+};
+
+const resetMap = () => {
+  map.panTo([StartAddress.X, StartAddress.Y]);
+};
+
+export {displayMarkers, resetMarker, resetMap}

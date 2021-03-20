@@ -35,10 +35,10 @@ const LOCATION_Y_UPPER = 139.8;
 
 const getAddress = () => {
   return {
-    x: getRandomFloat(LOCATION_X_LOWER, LOCATION_X_UPPER, 5),
-    y: getRandomFloat(LOCATION_Y_LOWER, LOCATION_Y_UPPER, 5),
-  }
-}
+    lat: getRandomFloat(LOCATION_X_LOWER, LOCATION_X_UPPER, 5),
+    lng: getRandomFloat(LOCATION_Y_LOWER, LOCATION_Y_UPPER, 5),
+  };
+};
 
 const getOffer = () => {
   const coordinates = getAddress();
@@ -58,11 +58,11 @@ const getOffer = () => {
       checkout: getRandomArrayElement(TIMELINES),
       features: getRandomArray(FEATURES),
       description: getRandomArrayElement(DESCRIPTIONS),
-      photo: getRandomArray(PHOTOS),
+      photos: getRandomArray(PHOTOS),
     },
     location: coordinates,
   };
-}
+};
 
 const OFFER_COUNT = 10;
 
