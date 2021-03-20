@@ -1,3 +1,7 @@
+import {sendData} from './api.js';
+import {showSuccessMessage, showFailMessage} from './flash.js';
+import {resetMarker, resetMap} from './map.js';
+
 const pageForm = document.querySelector('.ad-form');
 const pageFieldsets = pageForm.querySelectorAll('fieldset');
 const apartmentType = pageForm.querySelector('#type');
@@ -10,18 +14,19 @@ const mapFildsets = mapForm.querySelectorAll('fieldset');
 const title = pageForm.querySelector('#title');
 const roomNumber = pageForm.querySelector('#room_number');
 const capacity = pageForm.querySelector('#capacity');
+const resetButton = pageForm.querySelector('.ad-form__reset');
 
 const TitleInterval = {
   min: 30,
   max: 100,
-}
+};
 
 const MAX_APARTMENT_PRICE = 1000000;
 
 const roomParameters = {
   guest: '0',
   room: '100',
-}
+};
 
 const disablePage = (lock) => {
   mapSelects.forEach((item) => item.disabled = lock);
@@ -36,7 +41,7 @@ const disablePage = (lock) => {
     pageForm.classList.remove('ad-form--disabled');
     mapForm.classList.remove('map__filters--disabled');
   }
-}
+};
 
 const onRoomsAndGuestsMatch = () => {
   if (+roomNumber.value < +capacity.value) {
@@ -48,9 +53,7 @@ const onRoomsAndGuestsMatch = () => {
   } else {
     roomNumber.setCustomValidity('');
   }
-
-  // roomNumber.reportValidity();
-}
+};
 
 roomNumber.addEventListener('change', onRoomsAndGuestsMatch);
 capacity.addEventListener('change', onRoomsAndGuestsMatch);
@@ -95,9 +98,37 @@ title.addEventListener('input', () => {
   title.reportValidity();
 });
 
+resetButton.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  pageForm.reset();
+  resetMarker();
+  resetMap();
+});
+
+const handleFormSubmit = () => {
+  showSuccessMessage();
+  pageForm.reset();
+  resetMarker();
+  resetMap();
+};
+
+const handleFormFail = () => {
+  showFailMessage();
+  resetMarker();
+  resetMap();
+};
+
+const setPageFormSubmit = () => {
+  pageForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    const formData = new FormData(evt.target);
+
+    sendData(handleFormSubmit, handleFormFail, formData)
+  });
+};
+
 onRoomsAndGuestsMatch();
 onApartmentTypeChange();
 
-disablePage(true);
-
-export {disablePage};
+export {disablePage, setPageFormSubmit};

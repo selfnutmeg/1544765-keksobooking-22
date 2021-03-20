@@ -27,7 +27,7 @@ const createFeaturesList = (arr, clone) => {
   })
 
   return featuresList;
-}
+};
 
 const createPhotosList = (arr, clone) => {
   const photosList = clone.querySelector('.popup__photos');
@@ -55,7 +55,7 @@ const createSingleCard = ({author, offer, location}) => {
   card.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   card.querySelector('.popup__description').textContent = offer.description;
   createFeaturesList(offer.features, card);
-  createPhotosList(offer.photo, card);
+  createPhotosList(offer.photos, card);
 
   return card;
 };
