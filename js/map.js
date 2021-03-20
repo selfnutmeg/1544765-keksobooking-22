@@ -1,5 +1,4 @@
 /* global L:readonly */
-// import {disablePage} from './form.js';
 import {createSingleCard} from './baloon.js';
 
 const StartAddress = {
@@ -29,12 +28,6 @@ const MainPin = {
 const map = L.map('map-canvas');
 const inputAddress = document.querySelector('#address');
 inputAddress.value = `${StartAddress.X}, ${StartAddress.Y}`;
-
-// disablePage(true);
-
-// map.on('load', () => {
-//   disablePage(false);
-// });
 
 map.setView({
   lat: StartAddress.X,
