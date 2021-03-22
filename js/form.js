@@ -131,4 +131,4 @@ const setPageFormSubmit = () => {
 onRoomsAndGuestsMatch();
 onApartmentTypeChange();
 
-export {disablePage, setPageFormSubmit};
+export {disablePage, setPageFormSubmit, mapForm};
