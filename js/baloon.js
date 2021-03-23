@@ -24,7 +24,7 @@ const createFeaturesList = (arr, clone) => {
     const element = document.createElement('li');
     element.classList.add('popup__feature', 'popup__feature--' + item);
     featuresList.appendChild(element);
-  })
+  });
 
   return featuresList;
 };
