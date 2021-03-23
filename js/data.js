@@ -49,7 +49,7 @@ const getOffer = () => {
     },
     offer: {
       title: getRandomArrayElement(TITLES),
-      address: '' + coordinates.x + ', ' + coordinates.y,
+      address: '' + coordinates.lat + ', ' + coordinates.lng,
       price: getRandomInteger(0, 1000000),
       type: getRandomArrayElement(APARTMENTS_TYPE),
       rooms: getRandomInteger(1, 10),

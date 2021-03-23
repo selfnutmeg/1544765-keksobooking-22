@@ -64,6 +64,8 @@ marker.on('moveend', (evt) => {
 
 marker.addTo(map);
 
+const markers = L.layerGroup().addTo(map);
+
 const displayMarkers = (points) => {
 
   points.forEach((point) => {
@@ -84,7 +86,7 @@ const displayMarkers = (points) => {
     );
 
     marker
-      .addTo(map)
+      .addTo(markers)
       .bindPopup(createSingleCard(point),
         {
           keepInView: true,
@@ -92,6 +94,10 @@ const displayMarkers = (points) => {
       )
   });
 };
+
+const resetMarkers = () => {
+  markers.clearLayers();
+}
 
 const resetMarker = () => {
   marker.setLatLng(
@@ -106,4 +112,4 @@ const resetMap = () => {
   map.panTo([StartAddress.X, StartAddress.Y]);
 };
 
-export {displayMarkers, resetMarker, resetMap}
+export {displayMarkers, resetMarker, resetMap, resetMarkers}
