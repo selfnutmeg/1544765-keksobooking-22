@@ -43,7 +43,7 @@ const updateMarkers = (data) => {
   resetMarkers();
   resetMap();
   const filteredData = filterMarkers(data);
-  displayMarkers(filteredData);
+  displayMarkers(filteredData.slice(0,10));
 };
 
 const setFilterListener = (cb) => mapForm.addEventListener('change', () => cb());

@@ -12,7 +12,7 @@ disablePage(false);
 const DISPLAY_DELAY = 500;
 
 const displayProperMarkers = (data) => {
-  displayMarkers(data);
+  displayMarkers(data.slice(0,10));
   setFilterListener(_.debounce(() => updateMarkers(data), DISPLAY_DELAY));
 };
 
