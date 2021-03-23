@@ -24,9 +24,9 @@ const filterByPrice = (marker) => {
 
   return housingPrice.value === DEFAULT_FILTER_VALUE || filterPriceCategory[housingPrice.value];
 };
-const filterByRooms = (marker) => housingRooms.value === DEFAULT_FILTER_VALUE || housingRooms.value == marker.offer.rooms;
+const filterByRooms = (marker) => housingRooms.value === DEFAULT_FILTER_VALUE || Number(housingRooms.value) === marker.offer.rooms;
 
-const filterByGuests = (marker) => housingGuests.value === DEFAULT_FILTER_VALUE || housingGuests.value == marker.offer.guests;
+const filterByGuests = (marker) => housingGuests.value === DEFAULT_FILTER_VALUE || Number(housingGuests.value) === marker.offer.guests;
 
 const filterByFeatures = (marker) => {
   const mapFeatureInputs = mapForm.querySelectorAll('.map__checkbox:checked');
